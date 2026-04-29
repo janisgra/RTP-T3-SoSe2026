@@ -116,6 +116,16 @@
             \cleardoublepage
         
         \section{(dV) Review of documentation for Serial.ICE}
+            From the documentation of Serial.ICE the following key information can be extracted:
+            \begin{itemize}
+                \item 2 options to send data I: through the direk-in main field and II: through the `Data to send' field. 
+                \item Data is received in the `Main window' field and shown here.
+                \item Logging: in the `Serial window' click on `LogtoFile' to log the communication to a file. The file is saved in the same directory as Serial.ICE.exe.
+            \end{itemize}
+
+            The necessary commands are $D25.0$, $D50.0$, $D75.0$, and $D100.0$ to set the duty cycle of the PWM signal to \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} respectively.
+
+            Based on this objective, a standardized test plan is implemented: (i) Define communication parameters (3.0 Mbaud, 8N1, no parity/flow control), (ii) Set the drive to PWM constant mode, (iii) reset the QEI counter and document environmental conditions, (iv) for each speed level, perform a jump from a standstill and fully log the response. This provides reproducible data sets that can subsequently be evaluated in a comparable manner.
 
             \cleardoublepage
 
@@ -123,12 +133,26 @@
 
 
     \chapter{Experiment T3: RetBot system identification, part I}
+        The EV3 robot was controlled via Serial.ICE using USB/virtual COM port. In constant PWM mode, symmetrical duty cycles of \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} were initially set for both drives (d/D refer to motors 0/1). To ensure complete traceability, the following standardized procedure was followed:
 
+        \begin{itemize}
+            \item 1. Connect and configure: Plug in the EV3 via USB, open Serial.ICE, set communication parameters (e.g., 3.0 MBaud, 8N1, no parity/flow control), optionally send v (version) and r (QEI reset).
+            \item 2. Set PWM and start logging: Select mode (m1), command desired PWM (d /D, e.g., d50.0, D50.0). Activate the log function in Serial.ICE so that commands and responses are recorded.
+            \item 3. Positioning and test run: Disconnect the USB cable, position the robot as defined on the track. Start the test locally on the device by pressing button 2; press button 2 again to stop. (The controller block centrally controls the inputs and outputs.)
+            \item 4. Retrieve and save measurement data: Reconnect the robot, send the command g in Serial.ICE to read the measurement data from the controller. Save/close the log file using the Log button.
+            \item 5. Repeat for all duty cycles: Repeat steps \numrange{1}{4} for \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, \SI{100}{\percent}, and, if applicable, for asymmetric settings (e.g., d25/D24, d50/D47, d75/D71, d100/D95) to improve tracking and compensate for motor differences.
+        \end{itemize}
+
+    
         \section{(e) Documentation of communication with the RetBot}
 
         \section{(f) Analysis of the RetBot's drive train}
             \missingfigure{TASK: import the data into Matlab and draw one graph per drive train containing the four different conditions and}
             \missingfigure{TASK: upload videos for two different duty-cycles moving alongside a folding rule!}
+
+        \section{Interpretation}\label{sec:Interpretation}
+
+            
 
 
 
@@ -137,17 +161,15 @@
     \appendix
         \makeatletter
         
-        \chapter{Appendix A}
+        \chapter{Appendix Frontmatter}
 
-            \section{List of Figures}
+                \cleardoublepage
 
             \listoffigures
 
-            \section{List of Tables}
-
             \listoftables
 
-            \section{List of Variables and Constants used in this report}
+                \cleardoublepage
 
         \chapter{Appendix Code and Resources}
 
