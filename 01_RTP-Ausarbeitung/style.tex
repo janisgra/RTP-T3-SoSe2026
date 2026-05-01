@@ -7,6 +7,7 @@
 \usepackage[final]{pdfpages}
 \usepackage{hyperref}
 \usepackage{pdfcomment}
+\usepackage{svg}
 
 \usepackage{siunitx}  
 \sisetup{locale = DE,separate-uncertainty}  
@@ -31,8 +32,39 @@
 
 \usepackage{todonotes}
 
+
 \usepackage{listings}
-\usepackage{csquotes}
+\usepackage{xcolor}
+
+\definecolor{codebg}{HTML}{F5F5F5}
+\definecolor{codeframe}{HTML}{D0D0D0}
+\definecolor{codekw}{HTML}{0033B3}
+\definecolor{codestr}{HTML}{067D17}
+\definecolor{codecom}{HTML}{8C8C8C}
+
+\lstdefinestyle{codeblock}{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    framesep=4pt,
+    framexleftmargin=4pt,
+    xleftmargin=4pt,
+    xrightmargin=4pt,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{codekw}\bfseries,
+    stringstyle=\color{codestr},
+    commentstyle=\color{codecom}\itshape,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=true,
+    aboveskip=4pt,
+    belowskip=4pt,
+}
+\lstset{style=codeblock}
+
+\usepackage[most]{tcolorbox}
+
 
 \pgfplotsset{plot coordinates/math parser=false}
 \newlength\fwidth
@@ -41,7 +73,7 @@
 
 %Kapitel-Layout
 \usepackage{lmodern} 
-\usepackage{xcolor}
+%\usepackage{xcolor}
 \colorlet{chapter}{black!75}
 \addtokomafont{chapter}{\color{chapter}}
 \makeatletter% siehe De-TeX-FAQ
@@ -80,13 +112,13 @@
 % Kopfzeile ----------------------------------------------------------------
 \ihead{Regelungstechnisches Praktikum (RTP)}
 \chead{}
-\ohead{\includegraphics[width=0.3\textwidth]{figure/oth-regensburg-logo.jpg}}
+\ohead{\includegraphics[width=0.3\textwidth]{figure/oth-regensburg-logo}}
 %
 \setlength{\headheight}{21mm} % Höhe der Kopfzeile
 %\setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
 
 % Fußzeile -----------------------------------------------------------------
-\ifoot{Name 1 Name 2}
+\ifoot{Marius Off, Janis Graf}
 \cfoot{\today}
 \ofoot{\pagemark}
 

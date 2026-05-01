@@ -16,37 +16,33 @@
             &
         \end{tabular}
 
+        \begin{minipage} [c] [8.5cm] [b] {\textwidth}
+            \Huge{
+                \begin{center}
+                    \textbf{Praktikum Regelungstechnik (RTP)}\\[0.8cm]
+                    \textbf{Versuch T2: Systemidentifikation} \\[1.5cm]
+                    \par
+                    {\large Versuch 2}\\[1cm]
+                    {\large \today} \\[1cm]
+                \end{center}
+                }
+        \end{minipage}
 
-    \begin{minipage} [c] [8.5cm] [b] {\textwidth}
-        \Huge{
+        \vspace{0.1cm}
+
+        \begin{minipage} [c] [3.5cm] [b] {\textwidth}
             \begin{center}
-                \textbf{Praktikum Regelungstechnik (RTP)}\\[0.8cm]
-                \textbf{Versuch T2: Systemidentifikation} \\[1.5cm]
-                \par
-                {\large Versuch $N$}\\[1cm]
-                %{\large empty} \\[1cm]
+                \vspace{0.3cm}
+                Gruppe 38\\
+                Marius Off\\
+                Janis Graf\\
+                \vspace{0.5cm}
+                %\texttt{Dokument-Version: 02}\\
             \end{center}
-            }
-        
-    \end{minipage}
-
-    \vspace{0.1cm}
-
-        
-    \begin{minipage} [c] [3.5cm] [b] {\textwidth}
-        \begin{center}
-        \vspace{0.3cm}
-        Gruppe 38\\
-        Marius Off\\
-        Janis Graf\\
-        \vspace{0.5cm}
-        \texttt{Dokument-Version: 02}\\
-        \end{center}
-    
-    \end{minipage}
-
+        \end{minipage}
 
     \end{titlepage}
+
 
     \tableofcontents
 
@@ -145,11 +141,20 @@
 
     
         \section{(e) Documentation of communication with the RetBot}
+            communication
+            g - get data 
+            d25.0 - set duty cycle of motor 0 to 25%
+
+            r - reset QEI counter
 
         \section{(f) Analysis of the RetBot's drive train}
+            The goal of the analysis is to quantitatively describe the drive dynamics based on the recorded QEI signals (positions) and the velocities derived from them.
+            The QEI time series were preprocessed for each duty cycle (uniform time base, offset correction), and the velocity was determined as a smoothed time derivative; this reduces high-frequency quantization and differentiation noise without significantly distorting the transient response.
+
+
             \missingfigure{TASK: import the data into Matlab and draw one graph per drive train containing the four different conditions and}
             \missingfigure{TASK: upload videos for two different duty-cycles moving alongside a folding rule!}
-
+            
         \section{Interpretation}\label{sec:Interpretation}
 
             
@@ -162,6 +167,23 @@
         \makeatletter
         
         \chapter{Appendix Frontmatter}
+
+            \section{Declarations}\label{app:statutory}
+
+                \begin{enumerate}
+                    \item Wir erkläre hiermit, dass wir dieses Dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet haben.
+                \end{enumerate}
+
+                \vskip22mm
+                Regensburg, den 2026-04-29, \\
+                \hskip5cm Marius Off\hskip2cm $Matrikelnummer:3416002$,\\
+                \hskip5cm Janis Graf\hskip2cm $Matrikelnummer:3377251$
+                \vskip1mm
+                \hrule
+                \vskip1mm
+                {\footnotesize Ort, Datum und Unterschrift}
+
+                \vspace{12mm}
 
                 \cleardoublepage
 
