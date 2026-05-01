@@ -111,7 +111,15 @@
 
             To visuallize and confirm the direction of rotation, the experiment described in Section \ref{ch:ExperimentT3} has been performed, where the QEI signals were recorded while the motor was driven in both forward and reverse directions. The resulting QEI identifies the direction of rotation.
             
-            \missingfigure{figure of motors driven in forward and backwards motion}\missingfigure{Video of the turning, positioned next to the plot of the QEI signals}
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=\textwidth]{figure/qei-direction-of-rotation.pdf}
+                \caption{Opposite-direction on-spot turn at $\pm$25\,\% PWM: motor~0 (red, \texttt{d-25.0}) and motor~1 (green, \texttt{D25.0}). Solid lines show QEI position (left axis), dashed lines show angular velocity (right axis). The encoder accumulates with opposite signs, confirming direction detection via QEI.}
+                \label{fig:qei-direction}
+            \end{figure}
+
+            \todo[inline]{put figure and video next to each other}
+            \missingfigure{Video of the turning, positioned next to the plot of the QEI signals}
 
             \cleardoublepage
         
@@ -154,7 +162,8 @@
             g - get data 
             - output: all recorded data -> then saved to file
             - exerpt of log file:
-            {\tiny\begin{verbatim}
+            {\tiny
+            \begin{verbatim}
 fsample=500Hz
 Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
    0;   0;   0; 32.0;  0
@@ -208,7 +217,8 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
   96;   5;  12; 32.0; 25
   98;   6;  12; 32.0; 25
  100;   6;  13; 32.0; 25
-            \end{verbatim}}
+            \end{verbatim}
+            }
 
 
 
@@ -265,6 +275,20 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
             %\lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
 
             \section{Code used for the analysis of the Experiment}
+
+        
+        \chapter{Appendix extra calculations}
+        NOTE: This chapter exists because I cant read instructions and somehow thought that it would be interesting to calculate the movement and rotation of the robot based on the QEI data. 
+
+        \missingfigure{add plots for position and movment}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=0.7\textwidth]{figure/differential-drive-trajectory.pdf}
+            \caption{Reconstructed world-frame trajectories under no-slip differential-drive kinematics ($r=28$\,mm, $L=120$\,mm, CPR=360). Straight drives at 25–100\,\% PWM curve slightly leftward (right wheel leads); the $\pm$25\,\% on-spot turn produces $\approx 282^\circ$ rotation with $s \approx 0$.}
+            \label{fig:differential-drive-trajectory}
+        \end{figure}
+
+        \todo[inline]{add calculations for position and movment}
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %\chapter{Bibliography}
