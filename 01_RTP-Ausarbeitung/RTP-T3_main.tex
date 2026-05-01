@@ -8,7 +8,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
     \begin{titlepage}
 
         \begin{tabular}{l r} 
@@ -43,6 +42,9 @@
 
     \end{titlepage}
 
+    \todo[inline]{go through whole document and check for consistency of formatting, notation, and style and SI package usage}
+    \missingfigure{TASK: upload videos for two different duty-cycles moving alongside a folding rule!}
+        
 
     \tableofcontents
 
@@ -74,24 +76,25 @@
                 \label{fig:PWM-cycle}
             \end{figure}
 
-            \cleardoublepage
+        \cleardoublepage
 
         \section{(bV) Serial interface (RS232) and its key parameters}
-        The RS232 interface is used for connecting devices together one sender and one receiver. Before USB it was one of the most common interfaces for connecting peripherals to computers. Both the sender and the receiver have to be configured with the same parameters for the communication to work. The key parameters are shown in figure \ref{fig:RS232} and include:
-        \begin{itemize}
-            \item Baud rate: The speed of data transmission, measured in bits per second (bps). Common baud rates include and range from 110, 9600, 19200, 38400, 57600, and 115200 bps.
-            \item Data bits: The number of bits used to represent each character. Common settings are 7 or 8 data bits.
-            \item Parity: A method of error checking. It can be set to none, even, odd, mark, or space.
-            \item Stop bits: The number and configuration of stop bits used to signal the end of a data packet.
-            \item Flow control: A method to control the flow of data between devices, which can be hardware (RTS/CTS) or software (XON/XOFF).
-            \item Voltage levels: RS232 uses specific voltage levels for signaling, typically +3 to +15 volts for a logical '1' and -3 to -15 volts for a logical '0'.
-        \end{itemize}
+            The RS232 interface is used for connecting devices together one sender and one receiver. Before USB it was one of the most common interfaces for connecting peripherals to computers. Both the sender and the receiver have to be configured with the same parameters for the communication to work. The key parameters are shown in figure \ref{fig:RS232} and include:
 
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.8\textwidth, height=0.20\textheight, keepaspectratio]{figure/RS232-parameters.png}
-            \caption[Illustration of RS232 parameters]{By $Rs232_oscilloscope_trace.jpg$: Ktnbnderivative work: Samuel Tardieu (talk)  $Rs232_oscilloscope_trace.jpg$, CC SA 1.0, \hyperlink{https://commons.wikimedia.org/w/index.php?curid=6101703}{https://commons.wikimedia.org/w/index.php?curid=6101703}  \autocite{RS2322026}}\label{fig:RS232}
-        \end{figure}
+            \begin{itemize}
+                \item Baud rate: The speed of data transmission, measured in bits per second (bps). Common baud rates include and range from 110, 9600, 19200, 38400, 57600, and 115200 bps.
+                \item Data bits: The number of bits used to represent each character. Common settings are 7 or 8 data bits.
+                \item Parity: A method of error checking. It can be set to none, even, odd, mark, or space.
+                \item Stop bits: The number and configuration of stop bits used to signal the end of a data packet.
+                \item Flow control: A method to control the flow of data between devices, which can be hardware (RTS/CTS) or software (XON/XOFF).
+                \item Voltage levels: RS232 uses specific voltage levels for signaling, typically +3 to +15 volts for a logical '1' and -3 to -15 volts for a logical '0'.
+            \end{itemize}
+
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\textwidth, height=0.20\textheight, keepaspectratio]{figure/RS232-parameters.png}
+                \caption[Illustration of RS232 parameters]{By $Rs232_oscilloscope_trace.jpg$: Ktnbnderivative work: Samuel Tardieu (talk)  $Rs232_oscilloscope_trace.jpg$, CC SA 1.0, \hyperlink{https://commons.wikimedia.org/w/index.php?curid=6101703}{https://commons.wikimedia.org/w/index.php?curid=6101703}  \autocite{RS2322026}}\label{fig:RS232}
+            \end{figure}
 
             \cleardoublepage
 
@@ -114,7 +117,7 @@
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=\textwidth]{figure/qei-direction-of-rotation.pdf}
-                \caption{Opposite-direction on-spot turn at $\pm$25\,\% PWM: motor~0 (red, \texttt{d-25.0}) and motor~1 (green, \texttt{D25.0}). Solid lines show QEI position (left axis), dashed lines show angular velocity (right axis). The encoder accumulates with opposite signs, confirming direction detection via QEI.}
+                \caption[Opposite-direction on-spot turn at $\pm$25\,\% PWM]{Opposite-direction on-spot turn at $\pm$25\,\% PWM: motor~0 (red, \texttt{d-25.0}) and motor~1 (green, \texttt{D25.0}). Solid lines show QEI position (left axis), dashed lines show angular velocity (right axis). The encoder accumulates with opposite signs, confirming direction detection via QEI.}
                 \label{fig:qei-direction}
             \end{figure}
 
@@ -153,6 +156,8 @@
 
     
         \section{(e) Documentation of communication with the RetBot}
+            
+            \todo[inline]{add description of commands used and the output}
             communication
             r - reset QEI counter
             - output: NA
@@ -162,76 +167,85 @@
             g - get data 
             - output: all recorded data -> then saved to file
             - exerpt of log file:
+            \todo[inline]{format the data in the log file and put it here using listing}
             {\tiny
             \begin{verbatim}
-fsample=500Hz
-Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
-   0;   0;   0; 32.0;  0
-   2;   0;   0; 32.0;  0
-   4;   0;   0; 32.0;  0
-   6;   0;   0; 32.0;  0
-   8;   0;   0; 32.0;  0
-  10;   0;   0; 32.0;  0
-  12;   0;   0; 32.0;  0
-  14;   0;   0; 32.0;  0
-  16;   0;   0; 32.0;  0
-  18;   0;   0; 32.0;  0
-  20;   0;   0; 32.0;  0
-  22;   0;   0; 32.0;  0
-  24;   0;   0; 32.0;  0
-  26;   0;   1; 32.0;  0
-  28;   0;   1; 32.0;  0
-  30;   0;   1; 32.0;  0
-  32;   0;   1; 32.0;  0
-  34;   0;   2; 32.0;  0
-  36;   0;   2; 32.0;  0
-  38;   0;   2; 32.0;  0
-  40;   0;   2; 32.0; 25
-  42;   0;   3; 32.0; 25
-  44;   0;   3; 32.0; 25
-  46;   0;   3; 32.0; 25
-  48;   0;   4; 32.0; 25
-  50;   0;   4; 32.0; 25
-  52;   0;   4; 32.0; 25
-  54;   0;   4; 32.0; 25
-  56;   0;   5; 32.0; 25
-  58;   1;   5; 32.0; 25
-  60;   1;   6; 32.0; 25
-  62;   1;   6; 32.0; 25
-  64;   1;   6; 32.0; 25
-  66;   1;   6; 32.0; 25
-  68;   2;   7; 32.0; 25
-  70;   2;   7; 32.0; 25
-  72;   2;   8; 32.0; 25
-  74;   2;   8; 32.0; 25
-  76;   2;   8; 32.0; 25
-  78;   3;   9; 32.0; 25
-  80;   3;   9; 32.0; 25
-  82;   3;   9; 32.0; 25
-  84;   4;  10; 32.0; 25
-  86;   4;  10; 32.0; 25
-  88;   4;  10; 32.0; 25
-  90;   4;  11; 32.0; 25
-  92;   5;  11; 32.0; 25
-  94;   5;  12; 32.0; 25
-  96;   5;  12; 32.0; 25
-  98;   6;  12; 32.0; 25
- 100;   6;  13; 32.0; 25
+                fsample=500Hz
+                Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
+                0;   0;   0; 32.0;  0
+                2;   0;   0; 32.0;  0
+                4;   0;   0; 32.0;  0
+                6;   0;   0; 32.0;  0
+                8;   0;   0; 32.0;  0
+                10;   0;   0; 32.0;  0
+                12;   0;   0; 32.0;  0
+                14;   0;   0; 32.0;  0
+                16;   0;   0; 32.0;  0
+                18;   0;   0; 32.0;  0
+                20;   0;   0; 32.0;  0
+                22;   0;   0; 32.0;  0
+                24;   0;   0; 32.0;  0
+                26;   0;   1; 32.0;  0
+                28;   0;   1; 32.0;  0
+                30;   0;   1; 32.0;  0
+                32;   0;   1; 32.0;  0
+                34;   0;   2; 32.0;  0
+                36;   0;   2; 32.0;  0
+                38;   0;   2; 32.0;  0
+                40;   0;   2; 32.0; 25
+                42;   0;   3; 32.0; 25
+                44;   0;   3; 32.0; 25
+                46;   0;   3; 32.0; 25
+                48;   0;   4; 32.0; 25
+                50;   0;   4; 32.0; 25
+                52;   0;   4; 32.0; 25
+                54;   0;   4; 32.0; 25
+                56;   0;   5; 32.0; 25
+                58;   1;   5; 32.0; 25
+                60;   1;   6; 32.0; 25
+                62;   1;   6; 32.0; 25
+                64;   1;   6; 32.0; 25
+                66;   1;   6; 32.0; 25
+                68;   2;   7; 32.0; 25
+                70;   2;   7; 32.0; 25
+                72;   2;   8; 32.0; 25
+                74;   2;   8; 32.0; 25
+                76;   2;   8; 32.0; 25
+                78;   3;   9; 32.0; 25
+                80;   3;   9; 32.0; 25
+                82;   3;   9; 32.0; 25
+                84;   4;  10; 32.0; 25
+                86;   4;  10; 32.0; 25
+                88;   4;  10; 32.0; 25
+                90;   4;  11; 32.0; 25
+                92;   5;  11; 32.0; 25
+                94;   5;  12; 32.0; 25
+                96;   5;  12; 32.0; 25
+                98;   6;  12; 32.0; 25
+                100;   6;  13; 32.0; 25
             \end{verbatim}
             }
 
+            \todo[inline]{add a description of the observed behavior, e.g., the left deviation/drivt of the robot, the time it takes to reach a steady state, the maximum velocity reached, and any other interesting observations.}
+
+            \todo[inline]{add a description of the offset behavior in the 25\% duty cycle, the derivative of the velocity, showing the spike at the point}
 
 
         \section{(f) Analysis of the RetBot's drive train}
             The goal of the analysis is to quantitatively describe the drive dynamics based on the recorded QEI signals (positions) and the velocities derived from them.
             The QEI time series were preprocessed for each duty cycle (uniform time base, offset correction), and the velocity was determined as a smoothed time derivative; this reduces high-frequency quantization and differentiation noise without significantly distorting the transient response.
 
+            \todo[inline]{add description of the smoothing method used, e.g., Savitzky--Golay filter with specific parameters}
 
             \missingfigure{TASK: import the data into Matlab and draw one graph per drive train containing the four different conditions and}
-            \missingfigure{TASK: upload videos for two different duty-cycles moving alongside a folding rule!}
-            
-        \section{Interpretation}\label{sec:Interpretation}
 
+
+            
+            \subsection{Interpretation}\label{sec:Interpretation}
+            \todo[inline]{add short interpretation paragraph}
+
+            \subsection{Conclusion}\label{sec:Conclusion}
+            \todo[inline]{add short conclusion paragraph}
             
 
 
@@ -241,54 +255,92 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
     \appendix
         % \makeatletter
         
-        \chapter{Appendix Frontmatter}
+    \chapter{Appendix Frontmatter}
 
-            \section{Declarations}\label{app:statutory}
+        \section{Declarations}\label{app:statutory}
 
-                \begin{enumerate}
-                    \item Wir erkläre hiermit, dass wir dieses Dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet haben.
-                \end{enumerate}
+            \begin{enumerate}
+                \item Wir erkläre hiermit, dass wir dieses Dokument selbstständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet haben.
+            \end{enumerate}
 
-                \vskip22mm
-                Regensburg, den 2026-05-01, \\
-                \hskip5cm Marius Off\hskip2cm $Matrikelnummer:3416002$,\\
-                \hskip5cm Janis Graf\hskip2cm $Matrikelnummer:3377251$
-                \vskip1mm
-                \hrule
-                \vskip1mm
-                {\footnotesize Ort, Datum und Unterschrift}
+            \vskip22mm
+            Regensburg, den 2026-05-01, \\
+            -\hskip6cm Marius Off\hskip2cm $Matrikelnummer:3416002$,\\
+            "\hskip6cm Janis Graf\hskip2cm $Matrikelnummer:3377251$
+            \vskip1mm
+            \hrule
+            \vskip1mm
+            {\footnotesize Ort, Datum und Unterschrift}
 
-                \vspace{12mm}
+            \vspace{12mm}
 
-                \cleardoublepage
+            \cleardoublepage
 
-            \listoffigures
+        \listoffigures
 
-            \listoftables
+        \listoftables
 
-                \cleardoublepage
+            \cleardoublepage
 
-        \chapter{Appendix Code and Resources}
+    \chapter{Appendix Code and Resources}
 
             \section{Code used for the analysis of the Preperations}
 
             %\lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
-
-            \section{Code used for the analysis of the Experiment}
-
         
-        \chapter{Appendix extra calculations}
-        NOTE: This chapter exists because I cant read instructions and somehow thought that it would be interesting to calculate the movement and rotation of the robot based on the QEI data. 
+    \chapter{Appendix extra calculations}
+        NOTE: This chapter exists because I cant read instructions and somehow thought that it would be interesting to calculate the movement and rotation of the robot based on the QEI data.
 
-        \missingfigure{add plots for position and movment}
+        \section{Differential-drive kinematics from QEI}\label{sec:diffdrive}
+
+        Under the standard \emph{differential-drive / no-slip} assumption the body-frame trajectory of the RetBot can be reconstructed from the two QEI counters alone. The convention used here is \texttt{QEI1} = motor~0 = left wheel, \texttt{QEI2} = motor~1 = right wheel; the wheel radius is~$r$, the wheel separation~$L$, and \(\mathrm{CPR}\) the encoder counts per wheel revolution (after the gearbox). The encoder counts are first mapped to wheel angles and per-wheel arc lengths,
+
+        \begin{equation}
+            \theta_{L,R}(t) = \frac{\mathrm{steps}_{L,R}(t)}{\mathrm{CPR}}\,2\pi,
+            \qquad
+            s_{L,R}(t) = r\,\theta_{L,R}(t).
+            \label{eq:diffdrive-wheel}
+        \end{equation}
+
+        The body-frame forward path length and cumulative heading then follow as the average and length-normalised difference of the wheel arcs,
+
+        \begin{equation}
+            s(t) = \tfrac{1}{2}\!\left(s_R(t) + s_L(t)\right),
+            \qquad
+            \varphi(t) = \frac{s_R(t) - s_L(t)}{L},
+            \label{eq:diffdrive-body}
+        \end{equation}
+
+        with $\varphi > 0$ counterclockwise viewed from above. The body-frame velocities are obtained as smoothed time derivatives, $v = \dot s$ and $\omega = \dot\varphi$, using the same Savitzky--Golay filter described in Section~\ref{sec:Interpretation}. The resulting forward distance and heading change for the four main duty cycles are shown in Figure~\ref{fig:diffdrive-distance-heading}.
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=\textwidth]{figure/differential-drive-distance-heading.pdf}
+            \caption[Body-frame forward path $s$ (left) and cumulative heading change $\Delta\varphi$ (right)]{Body-frame forward path $s$ (left) and cumulative heading change $\Delta\varphi$ (right) from~\eqref{eq:diffdrive-body} for the four main duty cycles. The non-zero heading is the integrated effect of the right wheel consistently leading the left.}
+            \label{fig:diffdrive-distance-heading}
+        \end{figure}
+        
+        The world-frame pose $(x, y, \varphi)$ is obtained by discrete integration of the body-frame quantities. Treating each sample interval as a short circular arc of length $\Delta s_k$ and turn angle $\Delta\varphi_k$, the midpoint-heading update is second-order accurate under non-zero curvature:
+
+        \begin{align}
+            \varphi_k &= \varphi_{k-1} + \Delta\varphi_k,
+            \label{eq:diffdrive-pose-phi} \\
+            x_k &= x_{k-1} + \Delta s_k \cos\!\left(\varphi_{k-1} + \tfrac{1}{2}\Delta\varphi_k\right),
+            \label{eq:diffdrive-pose-x} \\
+            y_k &= y_{k-1} + \Delta s_k \sin\!\left(\varphi_{k-1} + \tfrac{1}{2}\Delta\varphi_k\right),
+            \label{eq:diffdrive-pose-y}
+        \end{align}
+
+        starting from $(x_0, y_0, \varphi_0) = (0, 0, 0)$. The reconstructed trajectories for the four constant-PWM drives plus the opposite-direction on-spot turn at $\pm 25\,\%$ are shown in Figure~\ref{fig:differential-drive-trajectory}.
+
         \begin{figure}[ht]
             \centering
             \includegraphics[width=0.7\textwidth]{figure/differential-drive-trajectory.pdf}
-            \caption{Reconstructed world-frame trajectories under no-slip differential-drive kinematics ($r=28$\,mm, $L=120$\,mm, CPR=360). Straight drives at 25–100\,\% PWM curve slightly leftward (right wheel leads); the $\pm$25\,\% on-spot turn produces $\approx 282^\circ$ rotation with $s \approx 0$.}
+            \caption[Reconstructed world-frame trajectories]{Reconstructed world-frame trajectories under~\eqref{eq:diffdrive-pose-phi}--\eqref{eq:diffdrive-pose-y} ($r = 28$\,mm, $L = 120$\,mm, $\mathrm{CPR} = 360$). Straight drives at \SIrange{25}{100}{\percent} PWM curve slightly leftward (right wheel leads); the $\pm 25\,\%$ on-spot turn produces $\approx 282^{\circ}$ of net rotation with $s \approx 0$.}
             \label{fig:differential-drive-trajectory}
         \end{figure}
 
-        \todo[inline]{add calculations for position and movment}
+        The on-spot turn provides a clean self-consistency check for the kinematics: with wheel commands of opposite sign and equal magnitude the arcs satisfy $s_L \approx -s_R$, so by~\eqref{eq:diffdrive-body} the body-frame forward path collapses to $s \approx 0$ while $\varphi$ accumulates linearly --- exactly as observed (final $s = -0.1\,\mathrm{mm}$, $\Delta\varphi = +281.9^{\circ}$ over the $\SI{3}{\second}$ log). The robot parameters used here are estimates for an EV3 educational chassis; an absolute calibration of $r$ against a measured reference distance would scale~$s$ correctly, while heading accuracy in turns is governed only by the ratio $r/L$.
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %\chapter{Bibliography}
