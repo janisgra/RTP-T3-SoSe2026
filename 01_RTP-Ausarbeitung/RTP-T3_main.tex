@@ -20,9 +20,9 @@
             \Huge{
                 \begin{center}
                     \textbf{Praktikum Regelungstechnik (RTP)}\\[0.8cm]
-                    \textbf{Versuch T2: Systemidentifikation} \\[1.5cm]
+                    \textbf{Versuch T3: RetBot system identification, part I} \\[1.5cm]
                     \par
-                    {\large Versuch 2}\\[1cm]
+                    {\large Versuch 3}\\[1cm]
                     {\large \today} \\[1cm]
                 \end{center}
                 }
@@ -109,6 +109,10 @@
 
             To illustrate the operating principle, consider a slotted disk mounted on the motor shaft with $N = 360$ evenly spaced slots around its circumference, sensed by two laser-based optical detectors offset by a quarter slot pitch (i.e.\ \SI{90}{\degree} electrical phase shift). As the disk rotates, each detector produces a square wave: detector A generates QEAx and detector B generates QEBx, with both signals running at the same frequency but offset in phase. For forward rotation, QEAx leads QEBx by \SI{90}{\degree}, so the (QEAx,~QEBx) pair cycles through the state sequence $00 \rightarrow 10 \rightarrow 11 \rightarrow 01 \rightarrow 00$; for reverse rotation, the sequence is traversed in the opposite order. Each transition between states is counted, yielding $4N = 1440$ counts per mechanical revolution and an angular resolution of \SI{0.25}{\degree}. At a shaft speed of, for example, \SI{600}{rpm} (\SI{10}{\hertz}), the QEAx and QEBx signals oscillate at \SI{3.6}{\kilo\hertz} and the counter POSxCNT updates at \SI{14.4}{\kilo\hertz}, incrementing for forward rotation and decrementing for reverse. Once per revolution, the INDXx pulse asserts and can be used to reset POSxCNT, providing an absolute reference that eliminates accumulated drift.
 
+            To visuallize and confirm the direction of rotation, the experiment described in Section \ref{ch:ExperimentT3} has been performed, where the QEI signals were recorded while the motor was driven in both forward and reverse directions. The resulting QEI identifies the direction of rotation.
+            
+            \missingfigure{figure of motors driven in forward and backwards motion}\missingfigure{Video of the turning, positioned next to the plot of the QEI signals}
+
             \cleardoublepage
         
         \section{(dV) Review of documentation for Serial.ICE}
@@ -128,7 +132,7 @@
 
 
 
-    \chapter{Experiment T3: RetBot system identification, part I}
+    \chapter{Experiment T3: RetBot system identification, part I}\label{ch:ExperimentT3}
         The EV3 robot was controlled via Serial.ICE using USB/virtual COM port. In constant PWM mode, symmetrical duty cycles of \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} were initially set for both drives (d/D refer to motors 0/1). To ensure complete traceability, the following standardized procedure was followed:
 
         \begin{itemize}
@@ -142,10 +146,71 @@
     
         \section{(e) Documentation of communication with the RetBot}
             communication
-            g - get data 
-            d25.0 - set duty cycle of motor 0 to 25%
-
             r - reset QEI counter
+            - output: NA
+            d25.0 - set duty cycle of motor 0 to 25%
+            D25.0 - set duty cycle of motor 1 to 25%
+            - output: NA
+            g - get data 
+            - output: all recorded data -> then saved to file
+            - exerpt of log file:
+            {\tiny\begin{verbatim}
+fsample=500Hz
+Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
+   0;   0;   0; 32.0;  0
+   2;   0;   0; 32.0;  0
+   4;   0;   0; 32.0;  0
+   6;   0;   0; 32.0;  0
+   8;   0;   0; 32.0;  0
+  10;   0;   0; 32.0;  0
+  12;   0;   0; 32.0;  0
+  14;   0;   0; 32.0;  0
+  16;   0;   0; 32.0;  0
+  18;   0;   0; 32.0;  0
+  20;   0;   0; 32.0;  0
+  22;   0;   0; 32.0;  0
+  24;   0;   0; 32.0;  0
+  26;   0;   1; 32.0;  0
+  28;   0;   1; 32.0;  0
+  30;   0;   1; 32.0;  0
+  32;   0;   1; 32.0;  0
+  34;   0;   2; 32.0;  0
+  36;   0;   2; 32.0;  0
+  38;   0;   2; 32.0;  0
+  40;   0;   2; 32.0; 25
+  42;   0;   3; 32.0; 25
+  44;   0;   3; 32.0; 25
+  46;   0;   3; 32.0; 25
+  48;   0;   4; 32.0; 25
+  50;   0;   4; 32.0; 25
+  52;   0;   4; 32.0; 25
+  54;   0;   4; 32.0; 25
+  56;   0;   5; 32.0; 25
+  58;   1;   5; 32.0; 25
+  60;   1;   6; 32.0; 25
+  62;   1;   6; 32.0; 25
+  64;   1;   6; 32.0; 25
+  66;   1;   6; 32.0; 25
+  68;   2;   7; 32.0; 25
+  70;   2;   7; 32.0; 25
+  72;   2;   8; 32.0; 25
+  74;   2;   8; 32.0; 25
+  76;   2;   8; 32.0; 25
+  78;   3;   9; 32.0; 25
+  80;   3;   9; 32.0; 25
+  82;   3;   9; 32.0; 25
+  84;   4;  10; 32.0; 25
+  86;   4;  10; 32.0; 25
+  88;   4;  10; 32.0; 25
+  90;   4;  11; 32.0; 25
+  92;   5;  11; 32.0; 25
+  94;   5;  12; 32.0; 25
+  96;   5;  12; 32.0; 25
+  98;   6;  12; 32.0; 25
+ 100;   6;  13; 32.0; 25
+            \end{verbatim}}
+
+
 
         \section{(f) Analysis of the RetBot's drive train}
             The goal of the analysis is to quantitatively describe the drive dynamics based on the recorded QEI signals (positions) and the velocities derived from them.
@@ -164,7 +229,7 @@
 
 
     \appendix
-        \makeatletter
+        % \makeatletter
         
         \chapter{Appendix Frontmatter}
 
@@ -175,7 +240,7 @@
                 \end{enumerate}
 
                 \vskip22mm
-                Regensburg, den 2026-04-29, \\
+                Regensburg, den 2026-05-01, \\
                 \hskip5cm Marius Off\hskip2cm $Matrikelnummer:3416002$,\\
                 \hskip5cm Janis Graf\hskip2cm $Matrikelnummer:3377251$
                 \vskip1mm
