@@ -262,7 +262,6 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
         \section{(f) Analysis of the RetBot's drive train}
             The goal of the analysis is to quantitatively describe the drive dynamics based on the recorded QEI signals (positions) and the velocities derived from them.
             The QEI time series were preprocessed for each duty cycle (uniform time base, offset correction), and the velocity was determined as a smoothed time derivative; this reduces high-frequency quantization and differentiation noise without significantly distorting the transient response.
-
             Because the QEI counter is integer-quantised, a naive forward-difference estimate of $\dot\theta$ is dominated by single-step quantisation jumps. To suppress this without flattening the step response, a \emph{Savitzky--Golay} filter with derivative order $d = 1$, polynomial order $p = 3$, and centered window length $N = 41$ samples ($\approx \SI{82}{\milli\second}$ at $f_s = \SI{500}{\hertz}$) is applied to each QEI time series (see Appendix~\ref{sec:derivative-chain} for the general form, equation~\eqref{eq:savgol}). The same filter family with wider windows is used for the higher derivatives reported in the appendix; the velocity window is the narrowest because the velocity transient contains the highest-frequency content of physical interest in this experiment.
 
             Figure~\ref{fig:drive-position-comparison} shows the QEI step response per drive train with the four duty cycles overlaid. Both wheels reach a near-constant slope (\,= angular velocity\,) within the first $\sim\SI{500}{\milli\second}$ at \SI{100}{\percent} PWM, and the steady-state slope scales close to linearly with the commanded duty cycle. Figure~\ref{fig:drive-position-overlap} reproduces the same data with motor~0 (dashed) and motor~1 (solid) overlaid per duty cycle and the difference $\mathrm{QEI2}-\mathrm{QEI1}$ shaded; motor~1 (\texttt{QEI2}) consistently leads motor~0 by 2--3\,\% across all four conditions. Figure~\ref{fig:drive-velocity-comparison} shows the smoothed angular velocity for the same four conditions per drive train.
@@ -294,8 +293,10 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
             \todo[inline]{add short interpretation paragraph}
 
             \subsection{Conclusion}\label{sec:Conclusion}
+
             \todo[inline]{add short conclusion paragraph}
             
+            As part of the experiment, the system identification of the EV3 powertrain was successfully carried out, and the fundamental behavior of pulse width modulation (PWM) was experimentally validated. As the objectives and evaluation show, the direct relationship between duty cycle and motor behavior was demonstrated: The various duty cycles (\SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, \SI{100}{\percent}) led to corresponding changes in output power via variations in the average motor voltage and resulted in clearly distinguishable, approximately proportional steady-state speeds. Furthermore, the position and velocity curves illustrated the real physical influences on the system. The observed asymmetry between the left and right motors, which led to a left drift, could be attributed to hardware tolerances. Despite occasional discontinuities in data acquisition (see QEI artifact during the \SI{25}{\percent} measurement), the smoothed step responses provide a valid data basis.
 
 
 
@@ -465,7 +466,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
 
             \begin{figure}[ht]
                 \centering
-                \includegraphics[width=0.85\textwidth]{figure/d50-integral-derivative-chain.pdf}
+                \includegraphics[width=0.85\textwidth, height=0.7\textheight, keepaspectratio]{figure/d50-integral-derivative-chain.pdf}
                 \caption[Integral / derivative chain at \SI{50}{\percent} PWM]{Integral / derivative chain of the QEI position for the \SI{50}{\percent} PWM step response: absement, position, velocity, acceleration and jerk on a common time axis. Both motors overlaid per panel.}
                 \label{fig:d50-integral-derivative-chain}
             \end{figure}
