@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{pdfcomment}
 \usepackage{svg}
+\usepackage{csquotes}
 
 \usepackage{siunitx}  
 \sisetup{locale = DE,separate-uncertainty}  
@@ -64,6 +65,19 @@
 \lstset{style=codeblock}
 
 \usepackage[most]{tcolorbox}
+
+
+\usepackage[
+	format=hang,			% Einstellung fuer Bildunterschriften
+%	font={footnotesize},
+	font={scriptsize},          % applies to both label and body
+%	labelfont={bf,small},  % overrides for the label only ("Figure 3.4")
+	textfont={scriptsize},      % overrides for the body only
+	labelfont={bf},
+	margin=1cm,
+	aboveskip=5pt,
+	position=bottom
+	]{caption}
 
 
 \pgfplotsset{plot coordinates/math parser=false}
