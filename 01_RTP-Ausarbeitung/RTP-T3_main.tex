@@ -42,16 +42,12 @@
 
     \end{titlepage}
 
-    \todo[inline]{go through whole document and check for consistency of formatting, notation, and style and SI package usage}
-    \missingfigure{TASK: upload videos for two different duty-cycles moving alongside a folding rule!}
-        
-
     \tableofcontents
 
 
-    \chapter{Preperations}\label{chap:preperations}
-    
-        \section{(aV) Explanation of pulse width modulation control for a drive.}
+    \chapter{Preparations}\label{chap:preperations}
+
+        \section{(aV) Explanation of pulse width modulation control for a drive}
             Pulse width modulation (PWM) is a technique used to control the power delivered to a load, such as a motor, by varying the width of the pulses in a pulse train. The duty cycle of the PWM signal determines the average voltage applied to the load, allowing for precise control of the motor's speed and torque.
             The important parameters of PWM include, the impulse width (the duration of the `on' time), the period (the total duration of one cycle), the break time (the duration of the `off' time), and the VCC span (the voltage level of the `on' and `off' states) as shown in Figure \ref{fig:PWM-parameters}.
 
@@ -64,9 +60,9 @@
 
             The duty cycles of the PWM signal can be adjusted to control the motor's behavior. See Figure \ref{fig:PWM-cycle} for example
             \begin{itemize}
-                \item \SI{10}{\percent} duty cycle means the motor receives power for \SI{10}{\percent} of the time, and is off for the remaining 90%
-                \item \SI{50}{\percent} duty cycle means the motor receives power for \SI{50}{\percent} of the time, and is off for the remaining 50%
-                \item \SI{90}{\percent} duty cycle means the motor receives power for \SI{90}{\percent} of the time, and is off for the remaining 10%
+                \item \SI{10}{\percent} duty cycle means the motor receives power for \SI{10}{\percent} of the time, and is off for the remaining \SI{90}{\percent}.
+                \item \SI{50}{\percent} duty cycle means the motor receives power for \SI{50}{\percent} of the time, and is off for the remaining \SI{50}{\percent}.
+                \item \SI{90}{\percent} duty cycle means the motor receives power for \SI{90}{\percent} of the time, and is off for the remaining \SI{10}{\percent}.
             \end{itemize}
 
             \begin{figure}[ht]
@@ -93,7 +89,7 @@
             \begin{figure}
                 \centering
                 \includegraphics[width=0.9\textwidth, height=0.20\textheight, keepaspectratio]{figure/RS232-parameters.png}
-                \caption[Illustration of RS232 parameters]{By $Rs232_oscilloscope_trace.jpg$: Ktnbnderivative work: Samuel Tardieu (talk)  $Rs232_oscilloscope_trace.jpg$, CC SA 1.0, \hyperlink{https://commons.wikimedia.org/w/index.php?curid=6101703}{https://commons.wikimedia.org/w/index.php?curid=6101703}  \autocite{RS2322026}}\label{fig:RS232}
+                \caption[Illustration of RS232 parameters]{By \texttt{Rs232\_oscilloscope\_trace.jpg}: Ktnbn, derivative work Samuel Tardieu (talk), \texttt{Rs232\_oscilloscope\_trace.jpg}, CC~SA~1.0, \href{https://commons.wikimedia.org/w/index.php?curid=6101703}{commons.wikimedia.org/w/index.php?curid=6101703}~\autocite{RS2322026}}\label{fig:RS232}
             \end{figure}
 
             \cleardoublepage
@@ -112,7 +108,7 @@
 
             To illustrate the operating principle, consider a slotted disk mounted on the motor shaft with $N = 360$ evenly spaced slots around its circumference, sensed by two laser-based optical detectors offset by a quarter slot pitch (i.e.\ \SI{90}{\degree} electrical phase shift). As the disk rotates, each detector produces a square wave: detector A generates QEAx and detector B generates QEBx, with both signals running at the same frequency but offset in phase. For forward rotation, QEAx leads QEBx by \SI{90}{\degree}, so the (QEAx,~QEBx) pair cycles through the state sequence $00 \rightarrow 10 \rightarrow 11 \rightarrow 01 \rightarrow 00$; for reverse rotation, the sequence is traversed in the opposite order. Each transition between states is counted, yielding $4N = 1440$ counts per mechanical revolution and an angular resolution of \SI{0.25}{\degree}. At a shaft speed of, for example, \SI{600}{rpm} (\SI{10}{\hertz}), the QEAx and QEBx signals oscillate at \SI{3.6}{\kilo\hertz} and the counter POSxCNT updates at \SI{14.4}{\kilo\hertz}, incrementing for forward rotation and decrementing for reverse. Once per revolution, the INDXx pulse asserts and can be used to reset POSxCNT, providing an absolute reference that eliminates accumulated drift.
 
-            To visuallize and confirm the direction of rotation, the experiment described in Section \ref{ch:ExperimentT3} has been performed, where the QEI signals were recorded while the motor was driven in both forward and reverse directions. The resulting QEI identifies the direction of rotation.
+            To visualize and confirm the direction of rotation, the experiment described in Chapter~\ref{ch:ExperimentT3} has been performed, where the QEI signals were recorded while the motor was driven in both forward and reverse directions. The resulting QEI identifies the direction of rotation.
             
             \begin{figure}[ht]
                 \centering
@@ -139,12 +135,12 @@
         \section{(dV) Review of documentation for Serial.ICE}
             From the documentation of Serial.ICE the following key information can be extracted:
             \begin{itemize}
-                \item 2 options to send data I: through the direk-in main field and II: through the `Data to send' field. 
-                \item Data is received in the `Main window' field and shown here.
-                \item Logging: in the `Serial window' click on `LogtoFile' to log the communication to a file. The file is saved in the same directory as Serial.ICE.exe.
+                \item Two options to send data: (I) through the direct-input main field, and (II) through the `Data to send' field.
+                \item Data is received in the `Main window' field and shown there.
+                \item Logging: in the `Serial window', click on `LogtoFile' to log the communication to a file. The file is saved in the same directory as \texttt{Serial.ICE.exe}.
             \end{itemize}
 
-            The necessary commands are $D25.0$, $D50.0$, $D75.0$, and $D100.0$ to set the duty cycle of the PWM signal to \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} respectively.
+            The necessary commands are \texttt{D25.0}, \texttt{D50.0}, \texttt{D75.0}, and \texttt{D100.0} to set the duty cycle of the PWM signal to \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} respectively.
 
             Based on this objective, a standardized test plan is implemented: (i) Define communication parameters (3.0 Mbaud, 8N1, no parity/flow control), (ii) Set the drive to PWM constant mode, (iii) reset the QEI counter and document environmental conditions, (iv) for each speed level, perform a jump from a standstill and fully log the response. This provides reproducible data sets that can subsequently be evaluated in a comparable manner.
 
@@ -154,15 +150,15 @@
 
 
     \chapter{Experiment T3: RetBot system identification, part I}\label{ch:ExperimentT3}
-        The EV3 robot was controlled via Serial.ICE using USB/virtual COM port. In constant PWM mode, symmetrical duty cycles of \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} were initially set for both drives (d/D refer to motors 0/1). To ensure complete traceability, the following standardized procedure was followed:
+        The EV3 robot was controlled via Serial.ICE using USB/virtual COM port. In constant PWM mode, symmetrical duty cycles of \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, and \SI{100}{\percent} were initially set for both drives (\texttt{d}/\texttt{D} refer to motors 0/1). To ensure complete traceability, the following standardized procedure was followed:
 
-        \begin{itemize}
-            \item 1. Connect and configure: Plug in the EV3 via USB, open Serial.ICE, set communication parameters (e.g., 3.0 MBaud, 8N1, no parity/flow control), optionally send v (version) and r (QEI reset).
-            \item 2. Set PWM and start logging: Select mode (m1), command desired PWM (d /D, e.g., d50.0, D50.0). Activate the log function in Serial.ICE so that commands and responses are recorded.
-            \item 3. Positioning and test run: Disconnect the USB cable, position the robot as defined on the track. Start the test locally on the device by pressing button 2; press button 2 again to stop. (The controller block centrally controls the inputs and outputs.)
-            \item 4. Retrieve and save measurement data: Reconnect the robot, send the command g in Serial.ICE to read the measurement data from the controller. Save/close the log file using the Log button.
-            \item 5. Repeat for all duty cycles: Repeat steps \numrange{1}{4} for \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, \SI{100}{\percent}, and, if applicable, for asymmetric settings (e.g., d25/D24, d50/D47, d75/D71, d100/D95) to improve tracking and compensate for motor differences.
-        \end{itemize}
+        \begin{enumerate}
+            \item Connect and configure: plug in the EV3 via USB, open Serial.ICE, set communication parameters (e.g.\ \SI{3.0}{Mbaud}, 8N1, no parity/flow control), optionally send \texttt{v} (version) and \texttt{r} (QEI reset).
+            \item Set PWM and start logging: select mode (\texttt{m1}), command desired PWM (\texttt{d}/\texttt{D}, e.g.\ \texttt{d50.0}, \texttt{D50.0}). Activate the log function in Serial.ICE so that commands and responses are recorded.
+            \item Positioning and test run: disconnect the USB cable, position the robot as defined on the track. Start the test locally on the device by pressing button~2; press button~2 again to stop. (The controller block centrally controls the inputs and outputs.)
+            \item Retrieve and save measurement data: reconnect the robot, send the command \texttt{g} in Serial.ICE to read the measurement data from the controller. Save/close the log file using the Log button.
+            \item Repeat for all duty cycles: repeat steps \numrange{1}{4} for \SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, \SI{100}{\percent}, and, if applicable, for asymmetric settings (e.g.\ \texttt{d25/D24}, \texttt{d50/D47}, \texttt{d75/D71}, \texttt{d100/D95}) to improve tracking and compensate for motor differences.
+        \end{enumerate}
 
     
         \section{(e) Documentation of communication with the RetBot}
@@ -173,7 +169,7 @@
                 \item \texttt{d}\textit{xx.x} and \texttt{D}\textit{xx.x} --- set the PWM duty cycle of motor~0 and motor~1 respectively to \textit{xx.x}\,\% (no reply; e.g.\ \texttt{d25.0}, \texttt{D25.0}).
                 \item \texttt{g} --- request the buffered measurement record. The controller streams 2250 samples of \texttt{Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/\%} sampled at $f_s = \SI{500}{\hertz}$, which Serial.ICE captures to file.
             \end{itemize}
-            Listing~\ref{lst:retbot-log} reproduces the first $\sim\!\SI{100}{\milli\second}$ of a \texttt{d25.0} run: the \texttt{Mot0/\%} field switches from 0 to 25 at $t = \SI{40}{\milli\second}$ when the command is issued, and the first non-zero \texttt{QEI1} step is recorded $\Delta t = \SI{18}{\milli\second}$ later -- the static-friction breakaway dead-time of motor~0.
+            Listing~\ref{lst:retbot-log} reproduces the first $\sim\!\SI{100}{\milli\second}$ of a \texttt{d25.0} run: the \texttt{Mot0/\%} field switches from 0 to 25 at $t = \SI{40}{\milli\second}$ when the command is issued, and the first non-zero \texttt{QEI1} step is recorded $\Delta t = \SI{18}{\milli\second}$ later --- the static-friction breakaway dead-time of motor~0.
 
 \begin{lstlisting}[
     caption={Excerpt of a \texttt{g}-command response logged by Serial.ICE (first \SI{100}{\milli\second} of a \texttt{d25.0} run).},
@@ -247,9 +243,9 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
  100;   6;  13; 32.0; 25
 \end{lstlisting}
             \subsection{Observed behavior}\label{subsec:observed-behavior}
-                All four drives exhibited a consistent leftward drift: motor~1 (right wheel, \texttt{QEI2}) accumulated 2--3\,\% more counts than motor~0 (left wheel, \texttt{QEI1}) for the same commanded duty cycle, the gap growing approximately linearly with travel (Figures~\ref{fig:drive-position-overlap} and~\ref{fig:drive-25per-deviation}). This asymmetry is plausibly attributable to ordinary real-world tolerances --- gearbox play, contact-patch and tyre-wear differences, bearing friction, supply-voltage drop along the cabling --- and motivates the asymmetric trim values listed in the procedure (e.g.\ \texttt{d100/D95}). For subsequent system identification it implies that the two drive trains should be modelled separately rather than as a single symmetric plant.
+                All four drives exhibited a consistent leftward drift: motor~1 (right wheel, \texttt{QEI2}) accumulated 2--3\,\% more counts than motor~0 (left wheel, \texttt{QEI1}) for the same commanded duty cycle, the gap growing approximately linearly with travel (Figures~\ref{fig:drive-position-overlap} and~\ref{fig:drive-25per-deviation}). This asymmetry is plausibly attributable to ordinary real-world tolerances --- gearbox play, contact-patch and tire-wear differences, bearing friction, supply-voltage drop along the cabling --- and motivates the asymmetric trim values listed in the procedure (e.g.\ \texttt{d100/D95}). For subsequent system identification it implies that the two drive trains should be modeled separately rather than as a single symmetric plant.
 
-                A more localised feature is visible only in the \SI{25}{\percent} response (Figure~\ref{fig:drive-25per-deviation}): around $t \approx \SI{0.75}{\second}$ the motor~0 QEI position jumps by several counts in a single sample, so the numerical derivative exhibits a near-vertical spike. The Savitzky-Golay window (Section~\ref{sec:derivative-chain}) spreads this near-discontinuity into a $\sim\!\SI{40}{\milli\second}$ plateau in the velocity trace. Because no corresponding event appears on motor~1 and the steady-state slope on either side of the plateau is unchanged, the most likely cause is a transient QEI counting glitch or a brief serial-link drop-out rather than a real mechanical event.
+                A more localized feature is visible only in the \SI{25}{\percent} response (Figure~\ref{fig:drive-25per-deviation}): around $t \approx \SI{0.75}{\second}$ the motor~0 QEI position jumps by several counts in a single sample, so the numerical derivative exhibits a near-vertical spike. The Savitzky-Golay window (Section~\ref{sec:derivative-chain}) spreads this near-discontinuity into a $\sim\!\SI{40}{\milli\second}$ plateau in the velocity trace. Because no corresponding event appears on motor~1 and the steady-state slope on either side of the plateau is unchanged, the most likely cause is a transient QEI counting glitch or a brief serial-link drop-out rather than a real mechanical event.
 
                 \begin{figure}[ht]
                     \centering
@@ -262,7 +258,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
         \section{(f) Analysis of the RetBot's drive train}
             The goal of the analysis is to quantitatively describe the drive dynamics based on the recorded QEI signals (positions) and the velocities derived from them.
             The QEI time series were preprocessed for each duty cycle (uniform time base, offset correction), and the velocity was determined as a smoothed time derivative; this reduces high-frequency quantization and differentiation noise without significantly distorting the transient response.
-            Because the QEI counter is integer-quantised, a naive forward-difference estimate of $\dot\theta$ is dominated by single-step quantisation jumps. To suppress this without flattening the step response, a \emph{Savitzky--Golay} filter with derivative order $d = 1$, polynomial order $p = 3$, and centered window length $N = 41$ samples ($\approx \SI{82}{\milli\second}$ at $f_s = \SI{500}{\hertz}$) is applied to each QEI time series (see Appendix~\ref{sec:derivative-chain} for the general form, equation~\eqref{eq:savgol}). The same filter family with wider windows is used for the higher derivatives reported in the appendix; the velocity window is the narrowest because the velocity transient contains the highest-frequency content of physical interest in this experiment.
+            Because the QEI counter is integer-quantized, a naive forward-difference estimate of $\dot\theta$ is dominated by single-step quantization jumps. To suppress this without flattening the step response, a \emph{Savitzky--Golay} filter with derivative order $d = 1$, polynomial order $p = 3$, and centered window length $N = 41$ samples ($\approx \SI{82}{\milli\second}$ at $f_s = \SI{500}{\hertz}$) is applied to each QEI time series (see Appendix~\ref{sec:derivative-chain} for the general form, equation~\eqref{eq:savgol}). The same filter family with wider windows is used for the higher derivatives reported in the appendix; the velocity window is the narrowest because the velocity transient contains the highest-frequency content of physical interest in this experiment.
 
             Figure~\ref{fig:drive-position-comparison} shows the QEI step response per drive train with the four duty cycles overlaid. Both wheels reach a near-constant slope (\,= angular velocity\,) within the first $\sim\SI{500}{\milli\second}$ at \SI{100}{\percent} PWM, and the steady-state slope scales close to linearly with the commanded duty cycle. Figure~\ref{fig:drive-position-overlap} reproduces the same data with motor~0 (dashed) and motor~1 (solid) overlaid per duty cycle and the difference $\mathrm{QEI2}-\mathrm{QEI1}$ shaded; motor~1 (\texttt{QEI2}) consistently leads motor~0 by 2--3\,\% across all four conditions. Figure~\ref{fig:drive-velocity-comparison} shows the smoothed angular velocity for the same four conditions per drive train.
 
@@ -276,7 +272,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
             \begin{figure}[ht]
                 \centering
                 \includegraphics[width=0.9\textwidth]{figure/drive-position-overlap.pdf}
-                \caption[QEI position step response with motor~0 vs motor~1 difference shaded per duty cycle]{QEI position step response, motor~0 (dashed) and motor~1 (solid) overlaid in the same panel for each duty cycle. The shaded band between each motor pair is the pointwise difference $\mathrm{QEI2}-\mathrm{QEI1}$; the same colour identifies the same duty cycle in lines and fill. Motor~1 leads motor~0 in every condition, by an amount that grows roughly linearly with travel.}
+                \caption[QEI position step response with motor~0 vs motor~1 difference shaded per duty cycle]{QEI position step response, motor~0 (dashed) and motor~1 (solid) overlaid in the same panel for each duty cycle. The shaded band between each motor pair is the pointwise difference $\mathrm{QEI2}-\mathrm{QEI1}$; the same color identifies the same duty cycle in lines and fill. Motor~1 leads motor~0 in every condition, by an amount that grows roughly linearly with travel.}
                 \label{fig:drive-position-overlap}
             \end{figure}
 
@@ -309,8 +305,8 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
 
             \vskip22mm
             Regensburg, den 2026-05-01, \\
-            "\hskip6cm Marius Off\hskip2cm $Matrikelnummer:3416002$,\\
-            "\hskip6cm Janis Graf\hskip2cm $Matrikelnummer:3377251$
+            "\hskip6cm Marius Off\hskip2cm Matrikelnummer:~3416002,\\
+            "\hskip6cm Janis Graf\hskip2cm Matrikelnummer:~3377251
             \vskip1mm
             \hrule
             \vskip1mm
@@ -320,9 +316,10 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
 
             \cleardoublepage
 
+        \todo[inline]{add better figure names to all figures }
         \listoffigures
 
-        \listoftables
+        %\listoftables
 
             \cleardoublepage
 
@@ -357,11 +354,14 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
             \end{figure}
 
             \section{Code used for the analysis of the Preperations}
+            
+            \todo[inline]{add code or note that code is available on GitHub}
 
             %\lstinputlisting[caption={Code used for the analysis of the Preperations}, label={lst:preperations}]{../02_Preperations/RTP-T2-analysis.ipynb}
         
     \chapter{Appendix extra calculations}
         NOTE: This chapter exists because I cant read instructions and somehow thought that it would be interesting to calculate the movement and rotation of the robot based on the QEI data.
+        \todo[inline]{add box around the note section}
 
         \section{Differential-drive kinematics from QEI}\label{sec:diffdrive}
 
@@ -369,13 +369,13 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
 
             None of these three mechanical parameters was measured directly for the specific RetBot used in this experiment, so the calculations below adopt nominal values for a typical EV3 educational chassis,
             \begin{equation*}
-                r = \SI{28}{\milli\metre},
+                r = \SI{28}{\milli\meter},
                 \qquad
-                L = \SI{120}{\milli\metre},
+                L = \SI{120}{\milli\meter},
                 \qquad
                 \mathrm{CPR} = 360,
             \end{equation*}
-            corresponding to a \SI{56}{\milli\metre} nominal wheel diameter, a \SI{12}{\centi\metre} centre-to-centre wheel separation, and the EV3 large-servo encoder's one-count-per-degree resolution at the output shaft. The absolute distances and angles reported in this section should therefore be read as order-of-magnitude estimates; the qualitative shape of the trajectories is unaffected by these parameter values. The encoder counts are first mapped to wheel angles and per-wheel arc lengths,
+            corresponding to a \SI{56}{\milli\meter} nominal wheel diameter, a \SI{12}{\centi\meter} center-to-center wheel separation, and the EV3 large-servo encoder's one-count-per-degree resolution at the output shaft. The absolute distances and angles reported in this section should therefore be read as order-of-magnitude estimates; the qualitative shape of the trajectories is unaffected by these parameter values. The encoder counts are first mapped to wheel angles and per-wheel arc lengths,
 
             \begin{equation}
                 \theta_{L,R}(t) = \frac{\mathrm{steps}_{L,R}(t)}{\mathrm{CPR}}\,2\pi,
@@ -384,7 +384,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
                 \label{eq:diffdrive-wheel}
             \end{equation}
 
-            The body-frame forward path length and cumulative heading then follow as the average and length-normalised difference of the wheel arcs,
+            The body-frame forward path length and cumulative heading then follow as the average and length-normalized difference of the wheel arcs,
 
             \begin{equation}
                 s(t) = \tfrac{1}{2}\!\left(s_R(t) + s_L(t)\right),
@@ -426,7 +426,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
 
         \section{Calculation of the derivatives and integrals of the motor position}\label{sec:derivative-chain}
 
-            The recorded QEI position $\theta(t)$ is integer-quantised at the encoder resolution; naive finite-difference differentiation therefore amplifies the sample-to-sample quantisation noise by a factor that grows with derivative order. To obtain usable estimates of the higher derivatives a \emph{Savitzky--Golay} filter is used: in a centered sliding window of $N$ samples a polynomial of degree $p$ is fitted in the least-squares sense, and the analytic derivative of order $d$ of that polynomial is evaluated at the central sample,
+            The recorded QEI position $\theta(t)$ is integer-quantized at the encoder resolution; naive finite-difference differentiation therefore amplifies the sample-to-sample quantization noise by a factor that grows with derivative order. To obtain usable estimates of the higher derivatives a \emph{Savitzky--Golay} filter is used: in a centered sliding window of $N$ samples a polynomial of degree $p$ is fitted in the least-squares sense, and the analytic derivative of order $d$ of that polynomial is evaluated at the central sample,
 
             \begin{equation}
                 \frac{d^{d}\theta}{dt^{d}}\bigg|_{t_k}
@@ -456,7 +456,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
                 \label{eq:trapezoid}
             \end{equation}
 
-            which is $\mathcal{O}(\Delta t^{2})$ accurate and does not amplify quantisation noise. Figure~\ref{fig:d50-integral-derivative-chain} shows the resulting chain for the \SI{50}{\percent} PWM step response: each panel makes one stage of the absement\,$\to$\,position\,$\to$\,velocity\,$\to$\,acceleration\,$\to$\,jerk transformation visible on a common time axis, with both motors overlaid per panel.
+            which is $\mathcal{O}(\Delta t^{2})$ accurate and does not amplify quantization noise. Figure~\ref{fig:d50-integral-derivative-chain} shows the resulting chain for the \SI{50}{\percent} PWM step response: each panel makes one stage of the absement\,$\to$\,position\,$\to$\,velocity\,$\to$\,acceleration\,$\to$\,jerk transformation visible on a common time axis, with both motors overlaid per panel.
 
             \begin{figure}[ht]
                 \centering
