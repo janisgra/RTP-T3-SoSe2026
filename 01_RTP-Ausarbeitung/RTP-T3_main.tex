@@ -288,15 +288,9 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
             \end{figure}
 
 
-            
-            \subsection{Interpretation}\label{sec:Interpretation}
-            \todo[inline]{add short interpretation paragraph}
-
             \subsection{Conclusion}\label{sec:Conclusion}
 
-            \todo[inline]{add short conclusion paragraph}
-            
-            As part of the experiment, the system identification of the EV3 powertrain was successfully carried out, and the fundamental behavior of pulse width modulation (PWM) was experimentally validated. As the objectives and evaluation show, the direct relationship between duty cycle and motor behavior was demonstrated: The various duty cycles (\SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, \SI{100}{\percent}) led to corresponding changes in output power via variations in the average motor voltage and resulted in clearly distinguishable, approximately proportional steady-state speeds. Furthermore, the position and velocity curves illustrated the real physical influences on the system. The observed asymmetry between the left and right motors, which led to a left drift, could be attributed to hardware tolerances. Despite occasional discontinuities in data acquisition (see QEI artifact during the \SI{25}{\percent} measurement), the smoothed step responses provide a valid data basis.
+            As part of the experiment, the system identification of the EV3 powertrain was successfully carried out, and the fundamental behavior of pulse width modulation (PWM) was experimentally validated. As the objectives and evaluation show, the direct relationship between duty cycle and motor behavior was demonstrated: the various duty cycles (\SI{25}{\percent}, \SI{50}{\percent}, \SI{75}{\percent}, \SI{100}{\percent}) led to corresponding changes in output power via variations in the average motor voltage and resulted in clearly distinguishable, approximately proportional steady-state speeds. Furthermore, the position and velocity curves illustrated the real physical influences on the system. The observed asymmetry between the left and right motors, which led to a left drift, could be attributed to hardware tolerances. Despite occasional discontinuities in data acquisition (see QEI artifact during the \SI{25}{\percent} measurement), the smoothed step responses provide a valid data basis.
 
 
 
@@ -399,7 +393,7 @@ Time/ms;QEI1/steps;QEI2/steps;d/cm;Mot0/%
                 \label{eq:diffdrive-body}
             \end{equation}
 
-            with $\varphi > 0$ counterclockwise viewed from above. The body-frame velocities are obtained as smoothed time derivatives, $v = \dot s$ and $\omega = \dot\varphi$, using the same Savitzky--Golay filter described in Section~\ref{sec:Interpretation}. The resulting forward distance and heading change for the four main duty cycles are shown in Figure~\ref{fig:diffdrive-distance-heading}.
+            with $\varphi > 0$ counterclockwise viewed from above. The body-frame velocities are obtained as smoothed time derivatives, $v = \dot s$ and $\omega = \dot\varphi$, using the same Savitzky--Golay filter detailed in Appendix~\ref{sec:derivative-chain}. The resulting forward distance and heading change for the four main duty cycles are shown in Figure~\ref{fig:diffdrive-distance-heading}.
 
             \begin{figure}[ht]
                 \centering
